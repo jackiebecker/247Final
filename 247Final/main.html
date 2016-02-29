@@ -1,0 +1,26 @@
+<!-- Here, put the two views: one for the image at the top, one for Eliza. Eliza will be consistently linked at the bottom of the page (3/4 - 2/3), but the ng-view at the top should depend on the ROUTE (see mainController.js), and should display one of the three conditions.  -->
+
+<!doctype html>
+<html ng-app="cs247App" ng-controller="MainController">
+  <head>
+    <title>CS 247 ROCKS</title>
+    <script src="mainController.js"></script>
+    <link rel="stylesheet" type="text/css" href="main.css" />
+
+    <script src="components/abstract/AbstractController.js"></script>
+    <script src="components/lifelike/LifelikeController.js"></script>
+    <script src="components/none/NoPictureController.js"></script>
+
+<!--     REPEAT EVERY TIME YOU NEED A STYLESHEET -->
+    <!-- <link rel="stylesheet" type="text/css" href="components/abstract/abstract.css" /> -->
+
+<!-- Other node modules may have to be linked here -->
+    <script src="node_modules/angular-route/angular-route.min.js"></script>
+  </head>
+
+  <body>
+
+<!--   	Not yet created, Richard add in? -->
+<!--     <div ng-include="ELIZA" ng-controller="ELIZAController"></div> -->
+  </body>
+</html>
