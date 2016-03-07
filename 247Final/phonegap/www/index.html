@@ -40,27 +40,23 @@
             <button class="back" onclick="switchLogged()">&lt</button>
             <h1 class="title">hari</h1>
             <div class="app">
+
                 <div id="deviceready" class="blink">
                     <p class="event listening">Connecting to Device</p>
                     <p class="event received">Talk to me!</p>
                 </div>
 
-                <!--<div id="reply">HARI: Hi! My name is hari!</div>-->
-
-                <form onsubmit="app.chatSubmit(document.getElementById('userInput'))">
-                <input id="userInput" type="text">
-                 <input type="submit">
+                <form onsubmit="app.testSubmit(document.getElementById('test').value)">
+                  <div id="conversation"></div>
+                  <input id="test" type="text">
+                  <input type="submit">
                 </form>
 
-                <div id="startOver">Start Over</div>
             </div>
-
         </div>
 
-        <script type="text/javascript" src="js/jquery-2.2.1.min.js"></script>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript" src="js/util.js"></script>
         <script type="text/javascript">
             app.initialize();
         </script>
