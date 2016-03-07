@@ -16,7 +16,10 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+var conversation = ['global array'];
+
 var app = {
+
     // Application Constructor
     initialize: function() {
         this.bindEvents();
@@ -44,14 +47,17 @@ var app = {
         listeningElement.setAttribute('style', 'display:none;');
         receivedElement.setAttribute('style', 'display:block;');
 
+        // document.getElementById("userInput").value = "";
+
         console.log('Received Event: ' + id);
     },
     // Will this work?
-    testSubmit: function(text) {
+    testSubmit: function(element) {
+        conversation.push(element.value);
         console.log("------------");
         console.log("");
         console.log("");
-        console.log(text);
+        console.log(conversation[conversation.length - 1]);
         console.log("");
         console.log("");
         console.log("------------");
