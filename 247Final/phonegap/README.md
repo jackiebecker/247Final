@@ -1,33 +1,18 @@
 # 247Final
 Final Project for 247 -- Eliza v2
 
+NEW: 
+
 To do:
-Three prototypes for Monday, testing adding characters alongside Eliza platform.
 
-	1) Basic Eliza -- imported Eliza program w/ no image
-	
-	2) Living Eliza -- animal/human appearance displayed at top of screen
-	
-	3) Abstract Eliza -- geometric character form at top of screen
-	
-Further protyping ideas:
+	1) Jackie	--- reference sheet, clean up UI, login screen (reset local storage)
 
-- Will people open up to low-fidelity “AI”?
+	2) Eric 	--- finish up presentation (poster, getting elements together, screenshots)
 
-	- Talk to an online eliza for 5 minutes 
-	
-- Text someone eliza-esque responses
+	3) Jorge	--- testing (5-10 people?)
 
-	- Pre-scripted?
-	
-- Will people continue to use this app?
+	4) Richard	--- get chat window to display prior messages
 
-- What would make people want to come back?
-
-- Would seeing a character make AI seem more real?
-
-	- Consistent v. inconsistent avatar
-	
-- What is the best personification of this character (doctor/pet/other)?
+NOTES: To update the character emotions, go into index.css and change the background-image. Reference sheet will be made. 
 
 
