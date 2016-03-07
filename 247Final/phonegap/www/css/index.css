@@ -163,3 +163,10 @@ input#userInput {
 button#startOver {
     margin-top:50px;
 }
+
+div#startOver {
+    margin:auto;
+    background-color: white;
+    width:40%;
+    margin-top:50px;
+}
