@@ -159,3 +159,7 @@ input#userInput {
     width:90%;
     height:50px;
 }
+
+button#startOver {
+    margin-top:50px;
+}

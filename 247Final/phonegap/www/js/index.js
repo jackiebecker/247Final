@@ -52,8 +52,8 @@ var app = {
 
         console.log('Received Event: ' + id);
     },
-    // Will this work?
-    testSubmit: function(element) {
+    //
+    chatSubmit: function(element) {
         conversation.push(element.value);
         console.log("------------");
         console.log("");
