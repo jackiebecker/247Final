@@ -47,10 +47,8 @@ var app = {
         listeningElement.setAttribute('style', 'display:none;');
         receivedElement.setAttribute('style', 'display:block;');
 
-        // Working
-        document.getElementById("userInput").value = "";
-
         conversation = JSON.parse(localStorage.getItem("conversation"));
+        document.getElementById("userInput").value = conversation.join("<br>");
 
         console.log('Received Event: ' + id);
     },

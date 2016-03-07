@@ -39,7 +39,7 @@
             </div>
 
             <form onsubmit="app.testSubmit(document.getElementById('userInput'))">
-              <input id="userInput" type="text" >
+              <input id="userInput" type="text" data-tap-toggle="false">
               <input type="submit">
             </form>
 
@@ -51,8 +51,16 @@
 
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/njquery-2.2.1.min.js"></script>
         <script type="text/javascript">
             app.initialize();
+        </script>
+
+        <script>
+          $('input').on('focus', function(e) {
+          e.preventDefault(); e.stopPropagation();
+          setTimeout(function() {window.scrollTo(0,0);}, 0); //the second 0 marks the Y scroll pos. Setting this to i.e. 100 will push the screen up by 100px.
+          });
         </script>
     </body>
 </html>
