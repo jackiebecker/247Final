@@ -82,6 +82,41 @@ body {
     font-style: normal;
 }
 
+#loginScreen {
+    position:absolute;             /* position in the center of the screen */
+    left: 19%;
+    top:40%;
+    text-align: center;
+    font-size: 16px;
+    display: inherit;
+} 
+
+.bigInput {
+    margin-top: 10%;
+    font-size: 16px;
+}
+
+button {
+    margin-top: 10%;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #73AD21;
+    background-color: white;
+}
+
+.back {
+    position: absolute;
+    margin-top: -2px;
+    margin-left: 10px;
+    color: #73AD21;
+    font-weight: bold;
+    padding-bottom: 4px;
+}
+
+#mainScreen {
+   display: none; 
+}
+
 #conversation {
     margin-top: 10%;
     margin-left: -2%;
@@ -141,7 +176,7 @@ input {
     50% { opacity: 0.4; }
     to { opacity: 1.0; }
 }
-
+ 
 .blink {
     animation:fade 3000ms infinite;
     -webkit-animation:fade 3000ms infinite;

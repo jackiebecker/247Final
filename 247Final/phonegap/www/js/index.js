@@ -17,6 +17,7 @@
  * under the License.
  */
 var conversation = ['startString'];
+var loggedIn = false;
 
 var app = {
 
@@ -68,3 +69,16 @@ var app = {
         localStorage.setItem("conversation", JSON.stringify(conversation));
     }
 };
+
+function switchLogged() {
+    conversation = ['startString'];
+    if (loggedIn) {
+        document.getElementById("loginScreen").style.display = "inherit";
+        document.getElementById("mainScreen").style.display = "none";
+        loggedIn = false;
+    } else {
+        document.getElementById("loginScreen").style.display = "none";
+        document.getElementById("mainScreen").style.display = "inherit";
+        loggedIn = true;
+    }
+}

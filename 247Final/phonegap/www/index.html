@@ -31,20 +31,28 @@
         <title>Hello World</title>
     </head>
     <body>
-        <h1 class="title">hari</h1>
-        <div class="app">
+        <div id="loginScreen">
+            What's your name? <br>
+            <input class="bigInput" type="text"></input> <br>
+            <button onclick="switchLogged()">Hi!</button>
+        </div>
+        <div id="mainScreen">
+            <button class="back" onclick="switchLogged()">&lt</button>
+            <h1 class="title">hari</h1>
+            <div class="app">
 
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Talk to me!</p>
+                <div id="deviceready" class="blink">
+                    <p class="event listening">Connecting to Device</p>
+                    <p class="event received">Talk to me!</p>
+                </div>
+
+                <form onsubmit="app.testSubmit(document.getElementById('test').value)">
+                  <div id="conversation"></div>
+                  <input id="test" type="text">
+                  <input type="submit">
+                </form>
+
             </div>
-
-            <form onsubmit="app.testSubmit(document.getElementById('test').value)">
-              <div id="conversation"></div>
-              <input id="test" type="text">
-              <input type="submit">
-            </form>
-
         </div>
 
         <script type="text/javascript" src="cordova.js"></script>
@@ -54,3 +62,4 @@
         </script>
     </body>
 </html>
+
