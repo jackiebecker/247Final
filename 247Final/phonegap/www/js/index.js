@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-var conversation = ['global array'];
+var conversation = ['startString'];
 
 var app = {
 
@@ -47,7 +47,10 @@ var app = {
         listeningElement.setAttribute('style', 'display:none;');
         receivedElement.setAttribute('style', 'display:block;');
 
-        // document.getElementById("userInput").value = "";
+        // Working
+        document.getElementById("userInput").value = "";
+
+        conversation = JSON.parse(localStorage.getItem("conversation"));
 
         console.log('Received Event: ' + id);
     },
@@ -58,8 +61,10 @@ var app = {
         console.log("");
         console.log("");
         console.log(conversation[conversation.length - 1]);
+        console.log(conversation.length);
         console.log("");
         console.log("");
         console.log("------------");
+        localStorage.setItem("conversation", JSON.stringify(conversation));
     }
 };
