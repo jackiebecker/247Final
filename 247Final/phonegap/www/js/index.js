@@ -16,8 +16,10 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-var conversation = ['startString'];
+
+var conversation = [];
 var loggedIn = false;
+var hariOutput;
 
 var app = {
 
@@ -39,6 +41,22 @@ var app = {
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
     },
+    saveHariOutput: function() {
+        hariOutput = document.getElementById("hariOutput").innerHTML;
+    },
+    updateConversation: function() {
+        if (localStorage["conversation"]) {
+            conversation = JSON.parse(localStorage.getItem("conversation"));
+        }
+        if (hariOutput != "") {
+            conversation.push("Hari: " + hariOutput);
+        }
+        document.getElementById("conversation").innerHTML = conversation.join('<br>');
+        document.getElementById("userInput").value = "";
+        document.getElementById("hariOutput").innerHTML = hariOutput;
+        convoBox = document.getElementById("conversation");
+        convoBox.scrollTop = convoBox.scrollHeight;
+    },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
         var parentElement = document.getElementById(id);
@@ -48,28 +66,25 @@ var app = {
         listeningElement.setAttribute('style', 'display:none;');
         receivedElement.setAttribute('style', 'display:block;');
 
-        conversation = JSON.parse(localStorage.getItem("conversation"));
-        document.getElementById("userInput").value = conversation.join("<br>");
-
         console.log('Received Event: ' + id);
     },
     //
     chatSubmit: function(element) {
-        conversation.push(element.value);
+        conversation.push("You: " + element.value);
         console.log("------------");
         console.log("");
         console.log("");
         console.log(conversation[conversation.length - 1]);
-        console.log(conversation.length);
         console.log("");
         console.log("");
         console.log("------------");
         localStorage.setItem("conversation", JSON.stringify(conversation));
+        hariOutput = "";
+        this.updateConversation();
     }
 };
 
 function switchLogged() {
-    conversation = ['startString'];
     if (loggedIn) {
         document.getElementById("loginScreen").style.display = "inherit";
         document.getElementById("mainScreen").style.display = "none";
@@ -80,3 +95,22 @@ function switchLogged() {
         loggedIn = true;
     }
 }
+
+// function switchLogged() {
+//     // The first time the app starts, the localStorage variable loggedIn
+//     // does not exist.
+//     if (localStorage["loggedIn"] === null) {
+//         // First time the Hi! button is hit to enter the app
+//         localStorage.setItem("loggedIn", true);
+//         console.log("Setting loggedIn to true for the first time.");
+//     }
+//     // If the localStorage variable loggedIn is true, go back to the Hi! screen
+//     if (localStorage.getItem("loggedIn") == true) {
+//         localStorage.setItem("loggedIn", false);
+//         localStorage.removeItem("conversation");
+//         console.log("Setting loggedIn to false.");
+//     } else {
+//         localStorage.setItem("loggedIn", true);
+//         console.log("Setting loggedIn to true.");
+//     }
+// }

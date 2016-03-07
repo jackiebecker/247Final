@@ -28,16 +28,16 @@
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Chewy" />
         <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>Hello World</title>
+        <title>Hari!</title>
     </head>
     <body>
-        <div id="loginScreen">
-            What's your name? <br>
-            <input class="bigInput" type="text"></input> <br>
-            <button onclick="switchLogged()">Hi!</button>
-        </div>
+        <!-- <div id="loginScreen"> -->
+        <!--     What's your name? <br> -->
+        <!--     <input class="bigInput" type="text"></input> <br> -->
+        <!--     <button onclick="switchLogged()">Hi!</button> -->
+        <!-- </div> -->
         <div id="mainScreen">
-            <button class="back" onclick="switchLogged()">&lt</button>
+            <!-- <button class="back" onclick="switchLogged()">&lt</button> -->
             <h1 class="title">hari</h1>
             <div class="app">
 
@@ -46,20 +46,24 @@
                     <p class="event received">Talk to me!</p>
                 </div>
 
-                <form onsubmit="app.testSubmit(document.getElementById('test').value)">
-                  <div id="conversation"></div>
-                  <input id="test" type="text">
-                  <input type="submit">
-                </form>
+                <div id="conversation"></div>
 
+                <!-- This is where you write your response. -->
+                <div id="hariOutput"><span id="hariColor">
+                    Nice to meet you sir!
+                </span></div>
+                <textarea id="userInput"></textarea>
+
+                <input id="userInputButton" type="button" value="Send to Hari" onclick="app.chatSubmit(document.getElementById('userInput'));" />
             </div>
         </div>
 
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
-            app.initialize();
+          app.initialize();
+          app.saveHariOutput();
+          app.updateConversation();
         </script>
     </body>
 </html>
-
