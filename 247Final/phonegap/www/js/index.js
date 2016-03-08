@@ -17,9 +17,8 @@
  * under the License.
  */
 
-var conversation = [];
-var loggedIn = false;
-var hariOutput;
+var startConversation = ['Hari: <span id="hariColor">Hi! My name is Hari!</span>'];
+var hariOutput = "";
 
 var app = {
 
@@ -43,19 +42,9 @@ var app = {
     },
     saveHariOutput: function() {
         hariOutput = document.getElementById("hariOutput").innerHTML;
-    },
-    updateConversation: function() {
-        if (localStorage["conversation"]) {
-            conversation = JSON.parse(localStorage.getItem("conversation"));
-        }
-        if (hariOutput != "") {
-            conversation.push("Hari: " + hariOutput);
-        }
-        document.getElementById("conversation").innerHTML = conversation.join('<br>');
-        document.getElementById("userInput").value = "";
-        document.getElementById("hariOutput").innerHTML = hariOutput;
-        convoBox = document.getElementById("conversation");
-        convoBox.scrollTop = convoBox.scrollHeight;
+        var conversation = JSON.parse(localStorage.getItem("conversation"));
+        conversation.push("Hari: " + hariOutput);
+        localStorage.setItem("conversation", JSON.stringify(conversation));
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
@@ -66,10 +55,11 @@ var app = {
         listeningElement.setAttribute('style', 'display:none;');
         receivedElement.setAttribute('style', 'display:block;');
 
-        console.log('Received Event: ' + id);
+        // console.log('Received Event: ' + id);
     },
     //
     chatSubmit: function(element) {
+        var conversation = JSON.parse(localStorage.getItem("conversation"));
         conversation.push("You: " + element.value);
         console.log("------------");
         console.log("");
@@ -79,38 +69,50 @@ var app = {
         console.log("");
         console.log("------------");
         localStorage.setItem("conversation", JSON.stringify(conversation));
+
+        // Clear Hari output after updating conversation with user input.
         hariOutput = "";
         this.updateConversation();
+    },
+    updateConversation: function() {
+        var conversation = JSON.parse(localStorage.getItem("conversation"));
+        // if (localStorage["conversation"]) {
+        // conversation = JSON.parse(localStorage.getItem("conversation"));
+        // }
+        // if (hariOutput != "") {
+        //     conversation.push("Hari: " + hariOutput);
+        // }
+        document.getElementById("conversation").innerHTML = conversation.join('<br>');
+        document.getElementById("userInput").value = "";
+        document.getElementById("hariOutput").innerHTML = hariOutput;
+        convoBox = document.getElementById("conversation");
+        convoBox.scrollTop = convoBox.scrollHeight;
+    },
+    checkLogin: function() {
+        if (localStorage.getItem("loggedIn") === null) {
+            // First time login.
+            console.log("First time login. Showing login screen.");
+            document.getElementById("loginScreen").style.display = "inherit";
+            document.getElementById("mainScreen").style.display = "none";
+            localStorage.setItem("conversation", JSON.stringify(startConversation));
+            return false;
+        } else {
+            console.log("Showing chat screen.");
+            document.getElementById("loginScreen").style.display = "none";
+            document.getElementById("mainScreen").style.display = "inherit";
+            return true;
+        }
+    },
+    switchLogged: function() {
+        if (localStorage.getItem("loggedIn") === null) {
+            // First time pressing the login button.
+            console.log("First time pressing login button.");
+            localStorage.setItem("loggedIn", 'true');
+            this.checkLogin();
+        } else {
+            console.log("Changing loggedIn to false.");
+            localStorage.clear(); // This is working
+            location.reload();
+        }
     }
 };
-
-function switchLogged() {
-    if (loggedIn) {
-        document.getElementById("loginScreen").style.display = "inherit";
-        document.getElementById("mainScreen").style.display = "none";
-        loggedIn = false;
-    } else {
-        document.getElementById("loginScreen").style.display = "none";
-        document.getElementById("mainScreen").style.display = "inherit";
-        loggedIn = true;
-    }
-}
-
-// function switchLogged() {
-//     // The first time the app starts, the localStorage variable loggedIn
-//     // does not exist.
-//     if (localStorage["loggedIn"] === null) {
-//         // First time the Hi! button is hit to enter the app
-//         localStorage.setItem("loggedIn", true);
-//         console.log("Setting loggedIn to true for the first time.");
-//     }
-//     // If the localStorage variable loggedIn is true, go back to the Hi! screen
-//     if (localStorage.getItem("loggedIn") == true) {
-//         localStorage.setItem("loggedIn", false);
-//         localStorage.removeItem("conversation");
-//         console.log("Setting loggedIn to false.");
-//     } else {
-//         localStorage.setItem("loggedIn", true);
-//         console.log("Setting loggedIn to true.");
-//     }
-// }

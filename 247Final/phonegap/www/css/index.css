@@ -114,7 +114,7 @@ button {
 }
 
 #mainScreen {
-   /* display: none; */
+   display: none;
 }
 
 #conversation {
@@ -207,9 +207,10 @@ div#startOver {
 }
 
 div#hariOutput {
-    display:none;
+    /* display:none; */
 }
 
 span#hariColor {
-    color:blue;
+    color:orange;
+    font-weight:200;
 }

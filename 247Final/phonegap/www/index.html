@@ -31,13 +31,13 @@
         <title>Hari!</title>
     </head>
     <body>
-        <!-- <div id="loginScreen"> -->
-        <!--     What's your name? <br> -->
-        <!--     <input class="bigInput" type="text"></input> <br> -->
-        <!--     <button onclick="switchLogged()">Hi!</button> -->
-        <!-- </div> -->
+        <div id="loginScreen">
+            What's your name? <br>
+            <input class="bigInput" type="text"></input> <br>
+            <button onclick="app.switchLogged()">Hi!</button>
+        </div>
         <div id="mainScreen">
-            <!-- <button class="back" onclick="switchLogged()">&lt</button> -->
+            <button class="back" onclick="app.switchLogged()">&lt</button>
             <h1 class="title">hari</h1>
             <div class="app">
 
@@ -48,9 +48,10 @@
 
                 <div id="conversation"></div>
 
-                <!-- This is where you write your response. -->
                 <div id="hariOutput"><span id="hariColor">
-                    Nice to meet you sir!
+                    <!-- This is where you write your response. -->
+                    What's up?!
+                    <!-------------------------------------------->
                 </span></div>
                 <textarea id="userInput"></textarea>
 
@@ -62,7 +63,10 @@
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
           app.initialize();
+          var l = app.checkLogin();
+          if (l == true) {
           app.saveHariOutput();
+          }
           app.updateConversation();
         </script>
     </body>
