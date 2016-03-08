@@ -19,6 +19,7 @@
 
 var startConversation = ['Hari: <span id="hariColor">Hi! My name is Hari!</span>'];
 var hariOutput = "";
+var username = "";
 
 var app = {
 
@@ -60,7 +61,7 @@ var app = {
     //
     chatSubmit: function(element) {
         var conversation = JSON.parse(localStorage.getItem("conversation"));
-        conversation.push("You: " + element.value);
+        conversation.push(username + ": " + element.value);
         console.log("------------");
         console.log("");
         console.log("");
@@ -108,6 +109,7 @@ var app = {
             // First time pressing the login button.
             console.log("First time pressing login button.");
             localStorage.setItem("loggedIn", 'true');
+            username = document.getElementById("input-name").value;
             this.checkLogin();
         } else {
             console.log("Changing loggedIn to false.");
