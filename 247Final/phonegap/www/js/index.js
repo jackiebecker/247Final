@@ -16,8 +16,9 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-var conversation = ['startString'];
-var loggedIn = false;
+
+var startConversation = ['Hari: <span id="hariColor">Hi! My name is Hari!</span>'];
+var hariOutput = "";
 
 var app = {
 
@@ -39,6 +40,12 @@ var app = {
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
     },
+    saveHariOutput: function() {
+        hariOutput = document.getElementById("hariOutput").innerHTML;
+        var conversation = JSON.parse(localStorage.getItem("conversation"));
+        conversation.push("Hari: " + hariOutput);
+        localStorage.setItem("conversation", JSON.stringify(conversation));
+    },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
         var parentElement = document.getElementById(id);
@@ -48,35 +55,64 @@ var app = {
         listeningElement.setAttribute('style', 'display:none;');
         receivedElement.setAttribute('style', 'display:block;');
 
-        conversation = JSON.parse(localStorage.getItem("conversation"));
-        document.getElementById("userInput").value = conversation.join("<br>");
-
-        console.log('Received Event: ' + id);
+        // console.log('Received Event: ' + id);
     },
     //
     chatSubmit: function(element) {
-        conversation.push(element.value);
+        var conversation = JSON.parse(localStorage.getItem("conversation"));
+        conversation.push("You: " + element.value);
         console.log("------------");
         console.log("");
         console.log("");
         console.log(conversation[conversation.length - 1]);
-        console.log(conversation.length);
         console.log("");
         console.log("");
         console.log("------------");
         localStorage.setItem("conversation", JSON.stringify(conversation));
+
+        // Clear Hari output after updating conversation with user input.
+        hariOutput = "";
+        this.updateConversation();
+    },
+    updateConversation: function() {
+        var conversation = JSON.parse(localStorage.getItem("conversation"));
+        // if (localStorage["conversation"]) {
+        // conversation = JSON.parse(localStorage.getItem("conversation"));
+        // }
+        // if (hariOutput != "") {
+        //     conversation.push("Hari: " + hariOutput);
+        // }
+        document.getElementById("conversation").innerHTML = conversation.join('<br>');
+        document.getElementById("userInput").value = "";
+        document.getElementById("hariOutput").innerHTML = hariOutput;
+        convoBox = document.getElementById("conversation");
+        convoBox.scrollTop = convoBox.scrollHeight;
+    },
+    checkLogin: function() {
+        if (localStorage.getItem("loggedIn") === null) {
+            // First time login.
+            console.log("First time login. Showing login screen.");
+            document.getElementById("loginScreen").style.display = "inherit";
+            document.getElementById("mainScreen").style.display = "none";
+            localStorage.setItem("conversation", JSON.stringify(startConversation));
+            return false;
+        } else {
+            console.log("Showing chat screen.");
+            document.getElementById("loginScreen").style.display = "none";
+            document.getElementById("mainScreen").style.display = "inherit";
+            return true;
+        }
+    },
+    switchLogged: function() {
+        if (localStorage.getItem("loggedIn") === null) {
+            // First time pressing the login button.
+            console.log("First time pressing login button.");
+            localStorage.setItem("loggedIn", 'true');
+            this.checkLogin();
+        } else {
+            console.log("Changing loggedIn to false.");
+            localStorage.clear(); // This is working
+            location.reload();
+        }
     }
 };
-
-function switchLogged() {
-    conversation = ['startString'];
-    if (loggedIn) {
-        document.getElementById("loginScreen").style.display = "inherit";
-        document.getElementById("mainScreen").style.display = "none";
-        loggedIn = false;
-    } else {
-        document.getElementById("loginScreen").style.display = "none";
-        document.getElementById("mainScreen").style.display = "inherit";
-        loggedIn = true;
-    }
-}
