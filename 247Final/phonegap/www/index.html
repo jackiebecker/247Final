@@ -41,7 +41,8 @@
             <h1 class="title">hari</h1>
             <div class="app">
 
-                <div id="deviceready" class="blink">
+<!--                 <img src="img/send.gif">
+ -->                <div id="deviceready" class="blink">
                     <p class="event listening">Connecting to Device</p>
                     <p class="event received">Talk to me!</p>
                 </div>
@@ -52,7 +53,9 @@
                     I am fine, thanks
                     <!-------------------------------------------->
                 </span></div>
-                <textarea id="userInput"></textarea>
+<!--                 <textarea contentEditable="true" id="userInput"></textarea>
+ -->
+                <div contentEditable="true" id="userInput"></div>
 
                 <input id="userInputButton" type="button" value="Send to Hari" onclick="app.chatSubmit(document.getElementById('userInput'));" />
             </div>

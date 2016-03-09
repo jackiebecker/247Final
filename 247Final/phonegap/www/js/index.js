@@ -61,7 +61,7 @@ var app = {
     //
     chatSubmit: function(element) {
         var conversation = JSON.parse(localStorage.getItem("conversation"));
-        conversation.push(username + ": " + element.value);
+        conversation.push(username + ": " + element.innerHTML);
         console.log("------------");
         console.log("");
         console.log("");
@@ -84,7 +84,7 @@ var app = {
         //     conversation.push("Hari: " + hariOutput);
         // }
         document.getElementById("conversation").innerHTML = conversation.join('<br>');
-        document.getElementById("userInput").value = "";
+        document.getElementById("userInput").innerHTML = "";
         document.getElementById("hariOutput").innerHTML = hariOutput;
         convoBox = document.getElementById("conversation");
         convoBox.scrollTop = convoBox.scrollHeight;
