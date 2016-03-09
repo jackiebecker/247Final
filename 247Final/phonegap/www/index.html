@@ -32,29 +32,28 @@
     </head>
     <body>
         <div id="loginScreen">
-            What's your name? <br>
+            <b>What's your name?</b> <br>
             <input class="bigInput" type="text" id="input-name"></input> <br>
             <button onclick="app.switchLogged()">Hi!</button>
         </div>
         <div id="mainScreen">
             <button class="back" onclick="app.switchLogged()">&lt</button>
-            <h1 class="title">hari</h1>
+
+<!-- JORGE - PUT ". . ." ANIMATION IN THE THOUGHT BUBBLE. ADD FUNCTION THAT SWITCHES
+DISPLAY OF THOUGHT BUBBLE V. SPEECH BUBBLE WHILE RESPONSE IS BEING COMPOSED/AFTER IT IS SENT -->
+
+            <!-- <div class="hari-speech" id="hariOutput"><span id="hariColor">Hi! It's hari :)<br><br><br></span></div>  -->
+            <div class="hari-thought" id="thoughtBubble"><span id="hariColor">...</span></div> 
             <div class="app">
 
                 <div id="deviceready" class="blink">
                     <p class="event listening">Connecting to Device</p>
-                    <p class="event received">Talk to me!</p>
+                    <p id="talkToMe" class="event received"><img class="centerImage"src="img/heart.png" /></p>
                 </div>
-
-                <div id="conversation"></div>
-                <div id="hariOutput"><span id="hariColor">
-                    <!-- This is where you write your response. -->
-                    I am fine, thanks
-                    <!-------------------------------------------->
-                </span></div>
-                <textarea id="userInput"></textarea>
-
-                <input id="userInputButton" type="button" value="Send to Hari" onclick="app.chatSubmit(document.getElementById('userInput'));" />
+                <button id="speakButton" class="user-speech" onclick="app.showTextArea()">CLICK HERE TO TALK TO HARI</button>
+                <textarea id="userInput" ng-if="userTyping">Here</textarea>
+<!-- REPLACE WITH "DONE" TO SEND
+                <input id="userInputButton" type="button" value="Send to Hari" onclick="app.chatSubmit(document.getElementById('userInput'));" /> -->
             </div>
         </div>
 

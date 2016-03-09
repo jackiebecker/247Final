@@ -116,5 +116,11 @@ var app = {
             localStorage.clear(); // This is working
             location.reload();
         }
+    },
+    showTextArea: function() {
+        document.getElementById("speakButton").style.display = "none";
+        document.getElementById("userInput").style.display = "inherit";
+        // Uncomment to make heart disappear 
+        // document.getElementById("talkToMe").style.display = "none";
     }
 };

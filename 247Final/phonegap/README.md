@@ -1,29 +1,29 @@
 Final Project for 247 -- hari
 
-FIRST: Make high-fidelity mock-up in sketch to nail out desired UI
+For your convenience, here are the tasks that each of you is supposed to do:  
 
 To do:
 
-  1) Some way of telling message is being composed -- spinning wheel, thought bubble, other
+  JORGE: 
+
+    1) Add "..." animation to the thought bubble div. See index.html, line 42
+
+    2) Expand input box given overflow -- lowest priority, as box already grows somewhat
+
+  ERIC:
+
+    1) Add gradient background to the app
+
+    2) Clean up our deliverables
   
-  2) Expanding input box given overflow, for longer reponses --- put at bottom and have expand upwards
-  
-  3) No "Submit" button -- implement w/ send/enter on keyboard
-  
-  4) Users didn't notice character changes. Fix this by either:
-  
-      - adding animation -- might not be feasible given the way the image is uploaded (by updating css)
-      
-      - changing text position -- hari's reponses at the top of the screen?
-          
-          - style as speech bubble?
-      
-      - other
-  
-  5) Make character changes more one-dimensional -- no change in color?
-  
-      - some feedback that character looked like eevee?
-  
-  6) speech instead of text input from user?
+  RICHARD: 
+
+    1) Make "return" send the message in the textarea
+
+    2) If you have time, implement js functin in app that:
+
+        - makes thought bubble appear when user sends a response (see display:none and display:inherit)
+
+        - makes speech bubble appear when reponse is sent
 
 
