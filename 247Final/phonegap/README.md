@@ -12,7 +12,7 @@ To do:
 
   ERIC:
 
-    1) Add gradient background to the app
+    1) Add gradient background to the app - DONE
 
     2) Clean up our deliverables
   
