@@ -410,17 +410,21 @@ span#hariColor {
   width:0;
 }
 
-textarea:focus {
+div#userInput:focus {
    height: 200%;
    margin-top: 10%;
 }
 
-textarea {
+div#userInput{
   margin-top: 20%;
-  bottom: -90%;
+/*  bottom: -90%;
+*/  
   margin-left: -5%;
   width: 100%;
-  height: 100%;
+/*  height: 100%;
+*/  
+  height: auto;
+  min-height: 40px;
   padding: 15px;
   border:3px solid #075698;
   background: #fff;
@@ -431,4 +435,9 @@ textarea {
   -webkit-border-bottom-left-radius:25px 50px;
   -moz-border-radius:25px / 50px;
   border-radius:25px / 50px;
+}
+
+img#bubble{
+  height: 95%;
+  width:95%;
 }
