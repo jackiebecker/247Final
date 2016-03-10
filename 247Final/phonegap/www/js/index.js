@@ -42,7 +42,7 @@ var app = {
         app.receivedEvent('deviceready');
     },
     saveHariOutput: function() {
-        hariOutput = document.getElementById("hariOutput").innerHTML;
+        // hariOutput = document.getElementById("hariOutput").innerHTML;
         var conversation = JSON.parse(localStorage.getItem("conversation"));
         conversation.push("Hari: " + hariOutput);
         localStorage.setItem("conversation", JSON.stringify(conversation));
@@ -83,11 +83,11 @@ var app = {
         // if (hariOutput != "") {
         //     conversation.push("Hari: " + hariOutput);
         // }
-        document.getElementById("conversation").innerHTML = conversation.join('<br>');
-        document.getElementById("userInput").innerHTML = "";
-        document.getElementById("hariOutput").innerHTML = hariOutput;
-        convoBox = document.getElementById("conversation");
-        convoBox.scrollTop = convoBox.scrollHeight;
+        // document.getElementById("conversation").innerHTML = conversation.join('<br>');
+        // document.getElementById("userInput").innerHTML = "";
+        // document.getElementById("hariOutput").innerHTML = hariOutput;
+        // convoBox = document.getElementById("conversation");
+        // convoBox.scrollTop = convoBox.scrollHeight;
     },
     checkLogin: function() {
         if (localStorage.getItem("loggedIn") === null) {
@@ -118,9 +118,26 @@ var app = {
         }
     },
     showTextArea: function() {
+        document.getElementById("userInput").innerHTML = "";
         document.getElementById("speakButton").style.display = "none";
         document.getElementById("userInput").style.display = "inherit";
-        // Uncomment to make heart disappear 
+        document.getElementById("userInput").setAttribute("contenteditable", "true");
+        document.getElementById("userInput").focus();
+        // Uncomment to make heart disappear
         // document.getElementById("talkToMe").style.display = "none";
+    },
+    hideTextArea: function() {
+        document.getElementById("speakButton").style.display = "inherit";
+        document.getElementById("userInput").blur();
+        document.getElementById("userInput").setAttribute("contenteditable", "false");
     }
 };
+
+$("#userInput").on('keydown', function(e) {
+    if(e.keyCode == 13)
+    {
+        e.preventDefault();
+        app.chatSubmit(document.getElementById('userInput'));
+        app.hideTextArea();
+    }
+});

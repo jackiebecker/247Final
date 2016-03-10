@@ -48,7 +48,7 @@ body {
 
 /* Portrait layout (default) */
 .app {
-    background:url(../img/young.png) no-repeat center top; /* 170px x 200px */   
+    background:url(../img/young.png) no-repeat center top; /* 170px x 200px */
     background-size: 170px 170px;
     position:absolute;             /* position in the center of the screen */
     left:50%;
@@ -376,7 +376,7 @@ span#hariColor {
 .user-speech {
   position:absolute;
   width: 90%;
-  bottom: -30%;
+  bottom: -70%;
   right: 5%;
   padding:15px 30px;
   margin:0;
