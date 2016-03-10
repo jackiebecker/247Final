@@ -411,20 +411,17 @@ span#hariColor {
 }
 
 div#userInput:focus {
-   height: 200%;
+   min-height: 120%;
    margin-top: 10%;
 }
 
 div#userInput{
   margin-top: 20%;
-/*  bottom: -90%;
-*/  
+  bottom: -90%;
   margin-left: -5%;
   width: 100%;
-/*  height: 100%;
-*/  
   height: auto;
-  min-height: 40px;
+  min-height: 10px;
   padding: 15px;
   border:3px solid #075698;
   background: #fff;
