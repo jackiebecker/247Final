@@ -285,7 +285,9 @@ span#hariColor {
 == HARI THOUGHT BUBBLE
 ** ===========================================*/
 
-#thoughtBubble{}
+#thoughtBubble {
+    display:none;
+}
 
 .hari-thought {
   position:absolute;
@@ -376,7 +378,7 @@ span#hariColor {
 .user-speech {
   position:absolute;
   width: 90%;
-  bottom: -70%;
+  bottom: -90%;
   right: 5%;
   padding:15px 30px;
   margin:0;

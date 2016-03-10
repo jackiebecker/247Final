@@ -19,7 +19,6 @@
 
 var startConversation = ['Hari: <span id="hariColor">Hi! My name is Hari!</span>'];
 var hariOutput = "";
-var username = "";
 
 var app = {
 
@@ -47,6 +46,10 @@ var app = {
         conversation.push("Hari: " + hariOutput);
         localStorage.setItem("conversation", JSON.stringify(conversation));
     },
+    initHariOutput: function() {
+        uname = localStorage.getItem("username");
+        document.getElementById("hariOutput").innerHTML = "Hi " + uname + "! My name is Hari!";
+    },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
         var parentElement = document.getElementById(id);
@@ -61,7 +64,8 @@ var app = {
     //
     chatSubmit: function(element) {
         var conversation = JSON.parse(localStorage.getItem("conversation"));
-        conversation.push(username + ": " + element.innerHTML);
+        uname = localStorage.getItem("username");
+        conversation.push(uname + ": " + element.innerHTML);
         console.log("------------");
         console.log("");
         console.log("");
@@ -110,6 +114,9 @@ var app = {
             console.log("First time pressing login button.");
             localStorage.setItem("loggedIn", 'true');
             username = document.getElementById("input-name").value;
+            username = $.trim(username);
+            localStorage.setItem("username", username);
+            this.initHariOutput();
             this.checkLogin();
         } else {
             console.log("Changing loggedIn to false.");
@@ -128,8 +135,14 @@ var app = {
     },
     hideTextArea: function() {
         document.getElementById("speakButton").style.display = "inherit";
+        myHTML = document.getElementById("userInput").innerHTML;
+        uname = localStorage.getItem("username");
+        document.getElementById("userInput").innerHTML = uname + ": " + myHTML;
         document.getElementById("userInput").blur();
         document.getElementById("userInput").setAttribute("contenteditable", "false");
+        document.getElementById("hariOutput").style.display = "none";
+        document.getElementById("thoughtBubble").style.display = "inherit";
+
     }
 };
 
