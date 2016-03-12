@@ -154,3 +154,8 @@ $("#userInput").on('keydown', function(e) {
         app.hideTextArea();
     }
 });
+
+$("#userInput").focusout(function() {
+    app.chatSubmit(document.getElementById('userInput'));
+    app.hideTextArea();
+});
